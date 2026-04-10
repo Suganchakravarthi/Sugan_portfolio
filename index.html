@@ -155,6 +155,26 @@
       border-color: rgba(99, 102, 241, 0.1);
     }
 
+    .nav-status {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      color: var(--accent);
+      background: rgba(99, 102, 241, 0.05);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      margin-left: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .nav-status {
+        display: none;
+      }
+    }
+
     .nav-logo {
       font-family: 'Bricolage Grotesque', sans-serif;
       font-weight: 800;
@@ -892,12 +912,35 @@
       position: absolute;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.6rem;
-      color: var(--text-3);
+      color: var(--accent);
       white-space: nowrap;
       pointer-events: none;
-      opacity: 0.15;
+      opacity: 0.2;
       z-index: -1;
       user-select: none;
+      animation: floatSlow 20s infinite linear;
+    }
+
+    @keyframes floatSlow {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-50px) rotate(5deg);
+      }
+
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+    }
+
+    .bg-icon {
+      position: absolute;
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: -1;
+      color: var(--text);
     }
 
     .radar-hex-bg {
@@ -2268,7 +2311,13 @@
 
   <!-- NAV -->
   <nav id="main-nav">
-    <a href="#" class="nav-logo">SUGAN<em>.</em></a>
+    <div style="display:flex; align-items:center;">
+      <a href="#" class="nav-logo">SUGAN<em>.</em></a>
+      <div class="nav-status">
+        <span class="pulse-dot" style="width:6px; height:6px;"></span>
+        SYSTEM_STABLE: v4.2.0
+      </div>
+    </div>
 
     <ul class="nav-links" id="nav-links">
       <li><a href="#about">About</a></li>
@@ -2307,6 +2356,14 @@
           class="word a1"><span>CHAKRAVARTHI&nbsp;</span></span>
       </h1>
       <div class="hero-underline"></div>
+
+      <div id="hero-terminal"
+        style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--text-3); margin-bottom:1.5rem; opacity:0.8;">
+        > Initializing test_suite... [OK]<br>
+        > Scanning vulnerabilities... [NONE FOUND]<br>
+        > Quality Score: 100%
+      </div>
+
       <div class="hero-title">
         <span>Software Tester</span>
         <span class="sep"></span>
@@ -2673,6 +2730,17 @@
 
   <!-- METRICS -->
   <section id="metrics">
+    <div class="bg-icon" style="top:10%; left:5%; "><svg width="120" height="120" viewBox="0 0 24 24"
+        fill="currentColor">
+        <path
+          d="M12 2a1 1 0 0 1 1 1v1.1a5 5 0 0 1 3.9 3.9h1.1a1 1 0 0 1 0 2h-1.1c.1.3.1.7.1 1v1h2a1 1 0 0 1 0 2h-2v1c0 .3 0 .7-.1 1h1.1a1 1 0 0 1 0 2h-1.1a5 5 0 0 1-3.9 3.9v1.1a1 1 0 0 1-2 0v-1.1a5 5 0 0 1-3.9-3.9H5a1 1 0 0 1 0-2h1.1c-.1-.3-.1-.7-.1-1v-1H4a1 1 0 0 1 0-2h2v-1c0-.3 0-.7.1-1H5a1 1 0 0 1 0-2h1.1A5 5 0 0 1 11 4.1V3a1 1 0 0 1 1-1zm0 4a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V9a3 3 0 0 0-3-3z" />
+      </svg></div>
+    <div class="bg-icon" style="bottom:10%; right:5%; transform:rotate(120deg)"><svg width="140" height="140"
+        viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
+      </svg></div>
+
     <div class="metrics-inner">
       <div>
         <div class="m-num" data-target="11">0</div>

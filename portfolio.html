@@ -1380,11 +1380,56 @@
       transform: scaleX(1);
     }
 
-    .sk-icon {
-      font-size: 2rem;
-      margin-bottom: .9rem;
-      display: block;
+    .sk-icon { width: 44px; height: 44px; margin-bottom: 1rem; display: block; object-fit: contain; animation: float 6s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+    .tool-icon { width: 32px; height: 32px; display: block; margin: 0 auto 0.6rem; object-fit: contain; transition: transform 0.3s ease; }
+    .tool-pill:hover .tool-icon { transform: scale(1.2) rotate(5deg); }
+
+    .proj-card { perspective: 1000px; }
+    .proj-inner { transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease; transform-style: preserve-3d; }
+    .proj-card:hover .proj-inner { transform: translateY(-10px) rotateX(2deg) rotateY(2deg); box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px var(--accent-glow); }
+
+    .proj-logo-box { 
+      width: 72px; 
+      height: 72px; 
+      border-radius: 16px; 
+      background: #ffffff; 
+      border: 1px solid rgba(255,255,255,0.1); 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      overflow: hidden; 
+      margin-bottom: 1.2rem; 
+      padding: 4px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      position: relative;
     }
+    .proj-logo-box::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(45deg, var(--accent), transparent, var(--accent));
+      border-radius: 18px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .proj-card:hover .proj-logo-box::after { opacity: 0.3; }
+    
+    .proj-logo-box img { 
+      max-width: 100%; 
+      max-height: 100%; 
+      object-fit: contain; 
+      transform: scale(1.1); /* Slight zoom for visibility */
+      transition: transform 0.4s ease;
+    }
+    .proj-card:hover .proj-logo-box img { transform: scale(1.25); }
+    .proj-header { align-items: center !important; gap: 1rem; }
+
+    /* TICKER LOGOS */
+    .ticker-logo { height: 24px; margin-right: 10px; filter: grayscale(1) invert(1) brightness(2); opacity: 0.7; transition: 0.3s; }
+    .ticker-item:hover .ticker-logo { filter: grayscale(0) invert(0) brightness(1); opacity: 1; }
 
     .sk-name {
       font-family: 'Bricolage Grotesque', sans-serif;
@@ -2812,7 +2857,7 @@
     <p class="section-sub reveal">From manual test design to automation scripting, API validation to performance
       benchmarking.</p>
     <div class="skills-wrap">
-      <div class="skill-card reveal" data-skill="95"><span class="sk-icon">🔍</span>
+      <div class="skill-card reveal" data-skill="95"><img src="https://www.vectorlogo.zone/logos/w3_html5/w3_html5-icon.svg" class="sk-icon" alt="Manual">
         <div class="sk-name">Manual Testing</div>
         <div class="sk-tools">Functional · Regression · Smoke · UAT · Integration</div>
         <div class="sk-bar">
@@ -2820,7 +2865,7 @@
         </div>
         <div class="sk-pct">95%</div>
       </div>
-      <div class="skill-card reveal" data-skill="80"><span class="sk-icon">🤖</span>
+      <div class="skill-card reveal" data-skill="80"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg" class="sk-icon" alt="Selenium">
         <div class="sk-name">Automation Testing</div>
         <div class="sk-tools">Selenium WebDriver · Python</div>
         <div class="sk-bar">
@@ -2828,7 +2873,7 @@
         </div>
         <div class="sk-pct">80%</div>
       </div>
-      <div class="skill-card reveal" data-skill="85"><span class="sk-icon">⚡</span>
+      <div class="skill-card reveal" data-skill="85"><img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" class="sk-icon" alt="Postman">
         <div class="sk-name">API Testing</div>
         <div class="sk-tools">Postman · REST · JSON Validation</div>
         <div class="sk-bar">
@@ -2836,7 +2881,7 @@
         </div>
         <div class="sk-pct">85%</div>
       </div>
-      <div class="skill-card reveal" data-skill="78"><span class="sk-icon">🚀</span>
+      <div class="skill-card reveal" data-skill="78"><img src="https://www.vectorlogo.zone/logos/apache_jmeter/apache_jmeter-icon.svg" class="sk-icon" alt="JMeter">
         <div class="sk-name">Performance Testing</div>
         <div class="sk-tools">Apache JMeter · Locust · k6</div>
         <div class="sk-bar">
@@ -2844,7 +2889,7 @@
         </div>
         <div class="sk-pct">78%</div>
       </div>
-      <div class="skill-card reveal" data-skill="82"><span class="sk-icon">📱</span>
+      <div class="skill-card reveal" data-skill="82"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" class="sk-icon" alt="Android">
         <div class="sk-name">Mobile App Testing</div>
         <div class="sk-tools">Android · iOS · Google Play Console</div>
         <div class="sk-bar">
@@ -2852,7 +2897,7 @@
         </div>
         <div class="sk-pct">82%</div>
       </div>
-      <div class="skill-card reveal" data-skill="75"><span class="sk-icon">🗄️</span>
+      <div class="skill-card reveal" data-skill="75"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="sk-icon" alt="Git">
         <div class="sk-name">Database & Dev Tools</div>
         <div class="sk-tools">SQL · PhpMyAdmin · Git · GitHub</div>
         <div class="sk-bar">
@@ -2904,6 +2949,7 @@
       <div class="proj-card reveal">
         <div class="proj-accent"></div>
         <div class="proj-inner">
+          <div class="proj-logo-box"><img src="Logo/cogosmart Logo.png" alt="CogoSmart"></div>
           <div class="proj-header"><span class="proj-num">01 / 14</span><span class="proj-badge badge-mob">📱
               Mobile</span></div>
           <div class="proj-title">CogoSmart</div>
@@ -2918,6 +2964,7 @@
       <div class="proj-card reveal">
         <div class="proj-accent"></div>
         <div class="proj-inner">
+          <div class="proj-logo-box"><img src="Logo/ERP Logo.png" alt="Aditya"></div>
           <div class="proj-header"><span class="proj-num">02 / 14</span><span class="proj-badge badge-web">🌐 Web</span>
           </div>
           <div class="proj-title">Aditya (Onstru ERP)</div>
@@ -2932,6 +2979,7 @@
       <div class="proj-card reveal">
         <div class="proj-accent"></div>
         <div class="proj-inner">
+          <div class="proj-logo-box"><img src="Logo/Rootments Logo.png" alt="Rootments"></div>
           <div class="proj-header"><span class="proj-num">03 / 14</span><span class="proj-badge badge-both">💻 Web +
               Mobile</span></div>
           <div class="proj-title">Rootments</div>
@@ -2946,6 +2994,7 @@
       <div class="proj-card reveal">
         <div class="proj-accent"></div>
         <div class="proj-inner">
+          <div class="proj-logo-box"><img src="Logo/Site Sync Logo.png" alt="SiteSync"></div>
           <div class="proj-header"><span class="proj-num">04 / 14</span><span class="proj-badge badge-both">💻 Web +
               Mobile</span></div>
           <div class="proj-title">SiteSync</div>
@@ -2960,6 +3009,7 @@
       <div class="proj-card reveal">
         <div class="proj-accent"></div>
         <div class="proj-inner">
+          <div class="proj-logo-box"><img src="Logo/Expert LOGO .png" alt="Expert Internal"></div>
           <div class="proj-header"><span class="proj-num">05 / 14</span><span class="proj-badge badge-web">🌐 Web</span>
           </div>
           <div class="proj-title">Expert Internal</div>
@@ -2974,6 +3024,7 @@
       <div class="proj-card reveal">
         <div class="proj-accent"></div>
         <div class="proj-inner">
+          <div class="proj-logo-box"><img src="Logo/Sukoyo Logo.png" alt="Sukoyo"></div>
           <div class="proj-header"><span class="proj-num">06 / 14</span><span class="proj-badge badge-web">🌐 Web</span>
           </div>
           <div class="proj-title">Sukoyo</div>
@@ -2988,6 +3039,7 @@
       <div class="proj-card reveal">
         <div class="proj-accent"></div>
         <div class="proj-inner">
+          <div class="proj-logo-box"><img src="Logo/Merapayment.png" alt="MeraPayment"></div>
           <div class="proj-header"><span class="proj-num">07 / 14</span><span class="proj-badge badge-web">🌐 Web</span>
           </div>
           <div class="proj-title">Onstru MeraPayment</div>
@@ -3001,6 +3053,7 @@
       <div class="proj-card reveal">
         <div class="proj-accent"></div>
         <div class="proj-inner">
+          <div class="proj-logo-box"><img src="Logo/Onstru Social.png" alt="Onstru Social"></div>
           <div class="proj-header"><span class="proj-num">08 / 14</span><span class="proj-badge badge-both">💻 Web +
               Mobile</span></div>
           <div class="proj-title">Onstru Super App</div>
@@ -3015,6 +3068,7 @@
       <div class="proj-card reveal">
         <div class="proj-accent"></div>
         <div class="proj-inner">
+          <div class="proj-logo-box"><img src="Logo/DLR.png" alt="DLR"></div>
           <div class="proj-header"><span class="proj-num">09 / 14</span><span class="proj-badge badge-both">💻 Web +
               Mobile</span></div>
           <div class="proj-title">DLR (Onstru)</div>
@@ -3029,6 +3083,7 @@
       <div class="proj-card reveal">
         <div class="proj-accent"></div>
         <div class="proj-inner">
+          <div class="proj-logo-box"><img src="Logo/Drivers Deck Logo.png" alt="DriversDeck"></div>
           <div class="proj-header"><span class="proj-num">10 / 14</span><span class="proj-badge badge-both">💻 Web +
               Mobile</span></div>
           <div class="proj-title">DriversDeck</div>
@@ -3043,6 +3098,7 @@
       <div class="proj-card reveal">
         <div class="proj-accent"></div>
         <div class="proj-inner">
+          <div class="proj-logo-box"><img src="Logo/Dacdiag Logo.png" alt="DacDiag"></div>
           <div class="proj-header"><span class="proj-num">11 / 14</span><span class="proj-badge badge-both">💻 Web +
               Mobile</span></div>
           <div class="proj-title">DacDiag</div>
@@ -3057,6 +3113,7 @@
       <div class="proj-card reveal">
         <div class="proj-accent"></div>
         <div class="proj-inner">
+          <div class="proj-logo-box"><img src="Logo/Onstru Mart.png" alt="Onstru Mart"></div>
           <div class="proj-header"><span class="proj-num">12 / 14</span><span class="proj-badge badge-web">🌐 Web</span>
           </div>
           <div class="proj-title">Onstru Mart</div>
@@ -3071,6 +3128,7 @@
       <div class="proj-card reveal">
         <div class="proj-accent"></div>
         <div class="proj-inner">
+          <div class="proj-logo-box"><img src="Logo/DHMS Logo.png" alt="DHMS"></div>
           <div class="proj-header"><span class="proj-num">13 / 14</span><span class="proj-badge badge-both">💻 Web +
               Mobile</span></div>
           <div class="proj-title">DHMS</div>
@@ -3085,6 +3143,7 @@
       <div class="proj-card reveal">
         <div class="proj-accent"></div>
         <div class="proj-inner">
+          <div class="proj-logo-box"><img src="Logo/Simcothreads logo.png" alt="Simco Internal"></div>
           <div class="proj-header"><span class="proj-num">14 / 14</span><span class="proj-badge badge-both">💻 Web +
               Mobile</span></div>
           <div class="proj-title">Simco Internal</div>
@@ -3194,45 +3253,34 @@
     <h2 class="section-heading reveal">My testing toolkit.</h2>
     <div class="ticker-wrap">
       <div class="ticker-track">
-        <span class="ticker-item"><span>✦</span>SELENIUM WEBDRIVER</span>
-        <span class="ticker-item"><span>✦</span>POSTMAN</span>
-        <span class="ticker-item"><span>✦</span>JIRA</span>
-        <span class="ticker-item"><span>✦</span>APACHE JMETER</span>
-        <span class="ticker-item"><span>✦</span>LOCUST</span>
-        <span class="ticker-item"><span>✦</span>K6</span>
-        <span class="ticker-item"><span>✦</span>PYTHON</span>
-        <span class="ticker-item"><span>✦</span>SQL</span>
-        <span class="ticker-item"><span>✦</span>GIT / GITHUB</span>
-        <span class="ticker-item"><span>✦</span>PHPMYADMIN</span>
-        <span class="ticker-item"><span>✦</span>GOOGLE PLAY CONSOLE</span>
-        <span class="ticker-item"><span>✦</span>SDLC / STLC</span>
-        <span class="ticker-item"><span>✦</span>SELENIUM WEBDRIVER</span>
-        <span class="ticker-item"><span>✦</span>POSTMAN</span>
-        <span class="ticker-item"><span>✦</span>JIRA</span>
-        <span class="ticker-item"><span>✦</span>APACHE JMETER</span>
-        <span class="ticker-item"><span>✦</span>LOCUST</span>
-        <span class="ticker-item"><span>✦</span>K6</span>
-        <span class="ticker-item"><span>✦</span>PYTHON</span>
-        <span class="ticker-item"><span>✦</span>SQL</span>
-        <span class="ticker-item"><span>✦</span>GIT / GITHUB</span>
-        <span class="ticker-item"><span>✦</span>PHPMYADMIN</span>
-        <span class="ticker-item"><span>✦</span>GOOGLE PLAY CONSOLE</span>
-        <span class="ticker-item"><span>✦</span>SDLC / STLC</span>
+        <span class="ticker-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg" class="ticker-logo">SELENIUM</span>
+        <span class="ticker-item"><img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" class="ticker-logo">POSTMAN</span>
+        <span class="ticker-item"><img src="https://www.vectorlogo.zone/logos/atlassian_jira/atlassian_jira-icon.svg" class="ticker-logo">JIRA</span>
+        <span class="ticker-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="ticker-logo">PYTHON</span>
+        <span class="ticker-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="ticker-logo">SQL</span>
+        <span class="ticker-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="ticker-logo">GIT / GITHUB</span>
+        <span class="ticker-item"><img src="https://www.vectorlogo.zone/logos/apache_jmeter/apache_jmeter-icon.svg" class="ticker-logo">JMETER</span>
+        <span class="ticker-item"><img src="https://www.vectorlogo.zone/logos/appium/appium-icon.svg" class="ticker-logo">APPIUM</span>
+        <!-- Duplicated for seamless loop -->
+        <span class="ticker-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg" class="ticker-logo">SELENIUM</span>
+        <span class="ticker-item"><img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" class="ticker-logo">POSTMAN</span>
+        <span class="ticker-item"><img src="https://www.vectorlogo.zone/logos/atlassian_jira/atlassian_jira-icon.svg" class="ticker-logo">JIRA</span>
+        <span class="ticker-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="ticker-logo">PYTHON</span>
       </div>
     </div>
     <div class="tools-grid reveal">
-      <div class="tool-pill"><span class="tool-em">🧪</span>Selenium</div>
-      <div class="tool-pill"><span class="tool-em">📮</span>Postman</div>
-      <div class="tool-pill"><span class="tool-em">📋</span>JIRA</div>
-      <div class="tool-pill"><span class="tool-em">⚡</span>JMeter</div>
-      <div class="tool-pill"><span class="tool-em">🦗</span>Locust</div>
-      <div class="tool-pill"><span class="tool-em">🚀</span>k6</div>
-      <div class="tool-pill"><span class="tool-em">🐍</span>Python</div>
-      <div class="tool-pill"><span class="tool-em">🗄️</span>SQL</div>
-      <div class="tool-pill"><span class="tool-em">🔀</span>Git</div>
-      <div class="tool-pill"><span class="tool-em">🐙</span>GitHub</div>
-      <div class="tool-pill"><span class="tool-em">🗃️</span>PhpMyAdmin</div>
-      <div class="tool-pill"><span class="tool-em">📱</span>Play Console</div>
+      <div class="tool-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg" class="tool-icon" alt="Selenium">Selenium</div>
+      <div class="tool-pill"><img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" class="tool-icon" alt="Postman">Postman</div>
+      <div class="tool-pill"><img src="https://www.vectorlogo.zone/logos/atlassian_jira/atlassian_jira-icon.svg" class="tool-icon" alt="JIRA">JIRA</div>
+      <div class="tool-pill"><img src="https://www.vectorlogo.zone/logos/apache_jmeter/apache_jmeter-icon.svg" class="tool-icon" alt="JMeter">JMeter</div>
+      <div class="tool-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="tool-icon" alt="Python">Python</div>
+      <div class="tool-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="tool-icon" alt="SQL">SQL</div>
+      <div class="tool-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="tool-icon" alt="Git">Git</div>
+      <div class="tool-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" class="tool-icon" style="filter: invert(1);" alt="GitHub">GitHub</div>
+      <div class="tool-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="tool-icon" alt="Java">Java</div>
+      <div class="tool-pill"><img src="https://www.vectorlogo.zone/logos/appium/appium-icon.svg" class="tool-icon" alt="Appium">Appium</div>
+      <div class="tool-pill"><img src="https://www.vectorlogo.zone/logos/jenkins/jenkins-icon.svg" class="tool-icon" alt="Jenkins">Jenkins</div>
+      <div class="tool-pill"><img src="https://www.vectorlogo.zone/logos/slack/slack-icon.svg" class="tool-icon" alt="Slack">Slack</div>
     </div>
   </section>
 
